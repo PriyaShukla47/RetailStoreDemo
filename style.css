@@ -6,6 +6,16 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.product-card img {
+  width: 100%;        /* Makes the image fill the product card width */
+  max-width: 200px;   /* Limits max width to 200px (adjust as needed) */
+  height: auto;       /* Keeps the aspect ratio intact */
+  display: block;     /* Removes any extra space below the image */
+  margin: 0 auto;     /* Centers the image inside the card */
+  object-fit: contain; /* Ensures the entire image fits inside the box */
+}
+
+
 /* Container for consistent width */
 .container {
   max-width: 1200px;
@@ -217,3 +227,4 @@ footer {
     padding: 8px 12px;
   }
 }
+
