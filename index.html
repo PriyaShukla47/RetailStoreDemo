@@ -110,16 +110,16 @@
 
     // Get only the two links you want to attach listeners to
     const productBTN = document.getElementById('ProductsLink');
-    const BrowsecategoryBTN = document.getElementById('BrowseCategoriesBTN');
+    const BrowseBTN = document.getElementById('BrowseCategoriesBTN');
 
-    homeLink.addEventListener('click', function(event) {
+    productBTN.addEventListener('click', function(event) {
       event.preventDefault();
       const name = getLinkName(this);
       // Use name here
       console.log("Returned name:", name);
     });
 
-    aboutLink.addEventListener('click', function(event) {
+    BrowseBTN.addEventListener('click', function(event) {
       event.preventDefault();
       const name = getLinkName(this);
       // Use name here
@@ -128,6 +128,7 @@
   </script>
 </body>
 </html>
+
 
 
 
