@@ -14,7 +14,7 @@
       <nav>
         <ul>
           <li><a href="#">Home</a></li>
-          <li><a href="listofproducts.html">Products</a></li>
+          <li><a href="listofproducts.html" id="ProductsLink">Products</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
@@ -75,31 +75,6 @@
             <p>$39.99</p>
             <a href="#" class="buy-btn">Add to Cart</a>
           </div>
-          <div class="product-card">
-            <img src="https://via.placeholder.com/200" alt="Product 7" />
-            <h3>Product Seven</h3>
-            <p>$49.99</p>
-            <a href="#" class="buy-btn">Add to Cart</a>
-          </div>
-          <div class="product-card">
-            <img src="https://via.placeholder.com/200" alt="Product 8" />
-            <h3>Product Eight</h3>
-            <p>$19.99</p>
-            <a href="#" class="buy-btn">Add to Cart</a>
-          </div>
-          <div class="product-card">
-            <img src="https://via.placeholder.com/200" alt="Product 9" />
-            <h3>Product Nine</h3>
-            <p>$22.99</p>
-            <a href="#" class="buy-btn">Add to Cart</a>
-          </div>
-          <div class="product-card">
-            <img src="https://via.placeholder.com/200" alt="Product 10" />
-            <h3>Product Ten</h3>
-            <p>$12.99</p>
-            <a href="#" class="buy-btn">Add to Cart</a>
-          </div>
-        </div>
 
         <button id="nextBtn" class="carousel-btn" aria-label="Next Products">›</button>
       </div>
@@ -128,8 +103,32 @@
       productGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     });
   </script>
+  <script>
+    function getLinkName(link) {
+      return link.name;
+    }
+
+    // Get only the two links you want to attach listeners to
+    const productBTN = document.getElementById('ProductsLink');
+    const BrowsecategoryBTN = document.getElementById('BrowseCategoriesBTN');
+
+    homeLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      const name = getLinkName(this);
+      // Use name here
+      console.log("Returned name:", name);
+    });
+
+    aboutLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      const name = getLinkName(this);
+      // Use name here
+      console.log("Returned name:", name);
+    });
+  </script>
 </body>
 </html>
+
 
 
 
