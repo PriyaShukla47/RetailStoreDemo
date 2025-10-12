@@ -1,20 +1,21 @@
+<!-- Filename: homepage.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://assets.adobedtm.com/e9875dd51dbe/c5dffc4dac8a/launch-24454231b646.min.js" async></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Retail Store</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header>
     <div class="container">
       <h1 class="logo">Retail Store</h1>
       <nav>
         <ul>
           <li><a href="#">Home</a></li>
-          <li><a href="listofproducts.html" id="ProductsLink">Products</a></li>
+          <li><a href="allProducts.html" id="ProductsLink" name="Products Link">Products</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
@@ -26,13 +27,12 @@
     <div class="container">
       <h2>Welcome to Retail Store</h2>
       <p>Discover quality products at affordable prices.</p>
-      <a href="listofproducts.html" class="btn" id="BrowseCategoriesBTN">Browse Categories</a>
+      <a href="allProducts.html" class="btn" id="BrowseCategoriesBTN" name="Browse Categories">Browse Categories</a>
     </div>
   </section>
 
   <section id="products" class="products">
     <div class="container">
-
       <h2>Featured Products</h2>
 
       <div class="product-carousel">
@@ -75,10 +75,10 @@
             <p>$39.99</p>
             <a href="#" class="buy-btn">Add to Cart</a>
           </div>
+        </div> <!-- Closing productGrid -->
 
         <button id="nextBtn" class="carousel-btn" aria-label="Next Products">›</button>
       </div>
-
     </div>
   </section>
 
@@ -88,12 +88,13 @@
     </div>
   </footer>
 
+  <!-- Carousel Scroll Script -->
   <script>
     const productGrid = document.getElementById('productGrid');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
-    const scrollAmount = 4 * 240; // Approx width of 4 product cards + gaps
+    const scrollAmount = 4 * 240;
 
     prevBtn.addEventListener('click', () => {
       productGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
@@ -103,36 +104,32 @@
       productGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     });
   </script>
-  <script>
-    function getLinkName(link) {
-      return link.name;
-    }
+<script>
+  let a = "";
+  let b = "";
 
-    // Get only the two links you want to attach listeners to
-    const productBTN = document.getElementById('ProductsLink');
-    const BrowseBTN = document.getElementById('BrowseCategoriesBTN');
+  document.getElementById('BrowseCategoriesBTN')?.addEventListener('click', function (event) {
+    event.preventDefault(); // stop the link from navigating immediately
+    a = "Browse Categories button clicked";
+    console.log(a);
 
-    productBTN.addEventListener('click', function(event) {
-      event.preventDefault();
-      const name = getLinkName(this);
-      // Use name here
-      console.log("Returned name:", name);
-    });
+    // Optional: navigate after a short delay (or immediately)
+    setTimeout(() => {
+      window.location.href = this.href;
+    }, 200); // Delay so you can see console log (can be 0 too)
+  });
 
-    BrowseBTN.addEventListener('click', function(event) {
-      event.preventDefault();
-      const name = getLinkName(this);
-      // Use name here
-      console.log("Returned name:", name);
-    });
-  </script>
+  document.getElementById('ProductsLink')?.addEventListener('click', function (event) {
+    event.preventDefault();
+    b = "Products link clicked";
+    console.log(b);
+
+    setTimeout(() => {
+      window.location.href = this.href;
+    }, 200);
+  });
+</script>
+
+
 </body>
 </html>
-
-
-
-
-
-
-
-

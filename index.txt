@@ -1,3 +1,4 @@
+<!-- Filename: homepage.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,13 +8,14 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header>
     <div class="container">
       <h1 class="logo">Retail Store</h1>
       <nav>
         <ul>
           <li><a href="#">Home</a></li>
-          <li><a href="#">Products</a></li>
+          <li><a href="allProducts.html" id="ProductsLink" name="Products Link">Products</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
@@ -25,13 +27,12 @@
     <div class="container">
       <h2>Welcome to Retail Store</h2>
       <p>Discover quality products at affordable prices.</p>
-      <a href="#products" class="btn">Browse Products</a>
+      <a href="allProducts.html" class="btn" id="BrowseCategoriesBTN" name="Browse Categories">Browse Categories</a>
     </div>
   </section>
 
   <section id="products" class="products">
     <div class="container">
-
       <h2>Featured Products</h2>
 
       <div class="product-carousel">
@@ -74,35 +75,10 @@
             <p>$39.99</p>
             <a href="#" class="buy-btn">Add to Cart</a>
           </div>
-          <div class="product-card">
-            <img src="https://via.placeholder.com/200" alt="Product 7" />
-            <h3>Product Seven</h3>
-            <p>$49.99</p>
-            <a href="#" class="buy-btn">Add to Cart</a>
-          </div>
-          <div class="product-card">
-            <img src="https://via.placeholder.com/200" alt="Product 8" />
-            <h3>Product Eight</h3>
-            <p>$19.99</p>
-            <a href="#" class="buy-btn">Add to Cart</a>
-          </div>
-          <div class="product-card">
-            <img src="https://via.placeholder.com/200" alt="Product 9" />
-            <h3>Product Nine</h3>
-            <p>$22.99</p>
-            <a href="#" class="buy-btn">Add to Cart</a>
-          </div>
-          <div class="product-card">
-            <img src="https://via.placeholder.com/200" alt="Product 10" />
-            <h3>Product Ten</h3>
-            <p>$12.99</p>
-            <a href="#" class="buy-btn">Add to Cart</a>
-          </div>
-        </div>
+        </div> <!-- Closing productGrid -->
 
         <button id="nextBtn" class="carousel-btn" aria-label="Next Products">›</button>
       </div>
-
     </div>
   </section>
 
@@ -112,12 +88,13 @@
     </div>
   </footer>
 
+  <!-- Carousel Scroll Script -->
   <script>
     const productGrid = document.getElementById('productGrid');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
-    const scrollAmount = 4 * 240; // Approx width of 4 product cards + gaps
+    const scrollAmount = 4 * 240;
 
     prevBtn.addEventListener('click', () => {
       productGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
@@ -127,5 +104,30 @@
       productGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     });
   </script>
+
+  <!-- Link Tracking Script -->
+  <script>
+    function getLinkName(link) {
+      return link.name || link.textContent.trim();
+    }
+
+    const productBTN = document.getElementById('ProductsLink');
+    const BrowseBTN = document.getElementById('BrowseCategoriesBTN');
+
+    productBTN.addEventListener('click', function(event) {
+      event.preventDefault();
+      const name = getLinkName(this);
+      console.log("Returned name:", name);
+      window.location.href = this.href;
+    });
+
+    BrowseBTN.addEventListener('click', function(event) {
+      event.preventDefault();
+      const name = getLinkName(this);
+      console.log("Returned name:", name);
+      window.location.href = this.href;
+    });
+  </script>
+
 </body>
 </html>
