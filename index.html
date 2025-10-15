@@ -106,6 +106,43 @@
     });
   </script>
 <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let a = "";
+    let b = "";
+
+    const browseButton = document.getElementById('BrowseCategoriesBTN');
+    const productsLink = document.getElementById('ProductsLink');
+
+    if (browseButton) {
+      browseButton.addEventListener('click', function (event) {
+        event.preventDefault(); // stop the link from navigating immediately
+        a = "Browse Categories button clicked";
+        console.log(a);
+
+        // Delay navigation
+        setTimeout(() => {
+          window.location.assign(this.href); // More predictable navigation
+        }, 200); // Optional: delay to show the console log
+      });
+    }
+
+    if (productsLink) {
+      productsLink.addEventListener('click', function (event) {
+        event.preventDefault(); // stop the link from navigating immediately
+        b = "Products link clicked";
+        console.log(b);
+
+        // Delay navigation
+        setTimeout(() => {
+          window.location.assign(this.href); // More predictable navigation
+        }, 200); // Optional: delay to show the console log
+      });
+    }
+  });
+</script>
+
+  
+<!-- <script>
   let a = "";
   let b = "";
 
@@ -129,11 +166,12 @@
       window.location.href = this.href;
     }, 200);
   });
-</script>
+</script> -->
 
 
 </body>
 </html>
+
 
 
 
