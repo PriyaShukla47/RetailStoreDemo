@@ -105,7 +105,7 @@
       productGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     });
   </script>
-
+<!--
   <script>
 document.addEventListener('DOMContentLoaded', function() {
   // Define two global variables
@@ -298,9 +298,55 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 </script> -->
 
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  let a = "";
+  let b = "";
+
+  // Helper function: safely fire Launch event
+  function sendToLaunch(eventName, data) {
+    if (typeof _satellite === "object" && typeof _satellite.track === "function") {
+      _satellite.track(eventName, data);
+    } else {
+      setTimeout(() => sendToLaunch(eventName, data), 100);
+    }
+  }
+
+  // --- Button 1: Browse Categories ---
+  const browseButton = document.getElementById('BrowseCategoriesBTN');
+  if (browseButton) {
+    browseButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      a = "Browse Categories button clicked";
+      console.log("Button 1:", a);
+
+      sendToLaunch('buttonClick', { clicked: 'BrowseCategoriesBTN', a: a });
+
+      setTimeout(() => window.location.assign(this.href), 300);
+    });
+  }
+
+  // --- Button 2: Products Link ---
+  const productsLink = document.getElementById('ProductsLink');
+  if (productsLink) {
+    productsLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      b = "Products link clicked";
+      console.log("Button 2:", b);
+
+      sendToLaunch('buttonClick', { clicked: 'ProductsLink', b: b });
+
+      setTimeout(() => window.location.assign(this.href), 300);
+    });
+  }
+});
+</script>
+
+
 
 </body>
 </html>
+
 
 
 
