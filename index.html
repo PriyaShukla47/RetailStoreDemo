@@ -114,6 +114,44 @@ document.addEventListener('DOMContentLoaded', function() {
   if (browseButton) {
     browseButton.addEventListener('click', function(event) {
       event.preventDefault();
+      console.log("Browse Categories clicked — about to send _satellite.track()");
+
+      _satellite?.track('buttonClick', {
+        buttonName: 'Browse Categories'
+      });
+
+      setTimeout(() => {
+        window.location.assign(this.href);
+      }, 200);
+    });
+  }
+
+  if (productsLink) {
+    productsLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      console.log("Products Link clicked — about to send _satellite.track()");
+
+      _satellite?.track('buttonClick', {
+        buttonName: 'Products Link'
+      });
+
+      setTimeout(() => {
+        window.location.assign(this.href);
+      }, 200);
+    });
+  }
+});
+</script>
+
+<!--
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const browseButton = document.getElementById('BrowseCategoriesBTN');
+  const productsLink = document.getElementById('ProductsLink');
+
+  if (browseButton) {
+    browseButton.addEventListener('click', function(event) {
+      event.preventDefault();
       // Pass data to Launch via Custom Event
       _satellite.track('buttonClick', {
         buttonName: 'Browse Categories'
@@ -139,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
-</script>
+</script> -->
 
 <!--<script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -207,6 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </body>
 </html>
+
 
 
 
