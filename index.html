@@ -90,7 +90,7 @@
   </footer>
 
   <!-- Carousel Scroll Script -->
-  <script>
+ <script>
     const productGrid = document.getElementById('productGrid');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
@@ -107,6 +107,62 @@
   </script>
 
   <script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Define two global variables
+  let a = "";
+  let b = "";
+
+  // Helper function: wait until Launch is ready (optional, safe)
+  function sendToLaunch(eventName, data) {
+    if (typeof _satellite === "object" && typeof _satellite.track === "function") {
+      _satellite.track(eventName, data);
+    } else {
+      // Retry until Launch loads
+      setTimeout(() => sendToLaunch(eventName, data), 100);
+    }
+  }
+
+  // --- BUTTON 1 ---
+  const browseButton = document.getElementById('BrowseCategoriesBTN');
+  if (browseButton) {
+    browseButton.addEventListener('click', function(event) {
+      event.preventDefault(); // stop navigation for now
+
+      a = "Browse Categories button clicked";
+      console.log(a);
+
+      // Optional: Send tracking to Adobe Launch
+      sendToLaunch('buttonClick', { buttonName: a });
+
+      // Delay navigation to allow time for tracking
+      setTimeout(() => {
+        window.location.assign(this.href);
+      }, 300); // 300ms is usually enough
+    });
+  }
+
+  // --- BUTTON 2 ---
+  const productsLink = document.getElementById('ProductsLink');
+  if (productsLink) {
+    productsLink.addEventListener('click', function(event) {
+      event.preventDefault();
+
+      b = "Products link clicked";
+      console.log(b);
+
+      // Optional: Send tracking to Adobe Launch
+      sendToLaunch('buttonClick', { buttonName: b });
+
+      setTimeout(() => {
+        window.location.assign(this.href);
+      }, 300);
+    });
+  }
+});
+</script>
+
+
+ <!-- <script>
 document.addEventListener('DOMContentLoaded', function() {
   const browseButton = document.getElementById('BrowseCategoriesBTN');
   const productsLink = document.getElementById('ProductsLink');
@@ -141,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
-</script>
+</script> -->
 
 <!--
   <script>
@@ -245,6 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </body>
 </html>
+
 
 
 
