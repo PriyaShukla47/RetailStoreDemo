@@ -112,30 +112,32 @@ window.b = "";
 document.addEventListener('DOMContentLoaded', function() {
 
   document.getElementById('BrowseCategoriesBTN')?.addEventListener('click', function(e) {
-    e.preventDefault(); // stop immediate navigation
-    a = "Browse Categories";
-    console.log("a =", a);
+    e.preventDefault();
+    window.a = "Browse Categories";
+    console.log("a =", window.a);
     
     setTimeout(() => {
       window.location.href = this.href;
-    }, 300);
+    }, 500); // a bit longer for Launch to catch
   });
 
   document.getElementById('ProductsLink')?.addEventListener('click', function(e) {
-    e.preventDefault(); // stop immediate navigation
-    b = "Products";
-    console.log("b =", b);
+    e.preventDefault();
+    window.b = "Products";
+    console.log("b =", window.b);
 
     setTimeout(() => {
       window.location.href = this.href;
-    }, 300);
+    }, 500);
   });
 
 });
+
 </script>
 
 </body>
 </html>
+
 
 
 
