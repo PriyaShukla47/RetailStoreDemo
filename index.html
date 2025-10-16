@@ -89,7 +89,7 @@
     </div>
   </footer>
 
-  <!-- Carousel Scroll Script -->
+  <!--  Scrolling  -->
  <script>
     const productGrid = document.getElementById('productGrid');
     const prevBtn = document.getElementById('prevBtn');
@@ -105,247 +105,38 @@
       productGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     });
   </script>
-<!--
-  <script>
+<script>
+let a = "";
+let b = "";
+
 document.addEventListener('DOMContentLoaded', function() {
-  // Define two global variables
-  let a = "";
-  let b = "";
 
-  // Helper function: wait until Launch is ready (optional, safe)
-  function sendToLaunch(eventName, data) {
-    if (typeof _satellite === "object" && typeof _satellite.track === "function") {
-      _satellite.track(eventName, data);
-    } else {
-      // Retry until Launch loads
-      setTimeout(() => sendToLaunch(eventName, data), 100);
-    }
-  }
-
-  // --- BUTTON 1 ---
-  const browseButton = document.getElementById('BrowseCategoriesBTN');
-  if (browseButton) {
-    browseButton.addEventListener('click', function(event) {
-      event.preventDefault(); // stop navigation for now
-
-      a = "Browse Categories button clicked";
-      console.log(a);
-
-      // Optional: Send tracking to Adobe Launch
-      sendToLaunch('buttonClick', { buttonName: a });
-
-      // Delay navigation to allow time for tracking
-      setTimeout(() => {
-        window.location.assign(this.href);
-      }, 300); // 300ms is usually enough
-    });
-  }
-
-  // --- BUTTON 2 ---
-  const productsLink = document.getElementById('ProductsLink');
-  if (productsLink) {
-    productsLink.addEventListener('click', function(event) {
-      event.preventDefault();
-
-      b = "Products link clicked";
-      console.log(b);
-
-      // Optional: Send tracking to Adobe Launch
-      sendToLaunch('buttonClick', { buttonName: b });
-
-      setTimeout(() => {
-        window.location.assign(this.href);
-      }, 300);
-    });
-  }
-});
-</script>
-
-
- <!-- <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const browseButton = document.getElementById('BrowseCategoriesBTN');
-  const productsLink = document.getElementById('ProductsLink');
-
-  if (browseButton) {
-    browseButton.addEventListener('click', function(event) {
-      event.preventDefault();
-      console.log("Browse Categories clicked — about to send _satellite.track()");
-
-      _satellite?.track('buttonClick', {
-        buttonName: 'Browse Categories'
-      });
-
-      setTimeout(() => {
-        window.location.assign(this.href);
-      }, 200);
-    });
-  }
-
-  if (productsLink) {
-    productsLink.addEventListener('click', function(event) {
-      event.preventDefault();
-      console.log("Products Link clicked — about to send _satellite.track()");
-
-      _satellite?.track('buttonClick', {
-        buttonName: 'Products Link'
-      });
-
-      setTimeout(() => {
-        window.location.assign(this.href);
-      }, 200);
-    });
-  }
-});
-</script> -->
-
-<!--
-  <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const browseButton = document.getElementById('BrowseCategoriesBTN');
-  const productsLink = document.getElementById('ProductsLink');
-
-  if (browseButton) {
-    browseButton.addEventListener('click', function(event) {
-      event.preventDefault();
-      // Pass data to Launch via Custom Event
-      _satellite.track('buttonClick', {
-        buttonName: 'Browse Categories'
-      });
-
-      setTimeout(() => {
-        window.location.assign(this.href);
-      }, 200);
-    });
-  }
-
-  if (productsLink) {
-    productsLink.addEventListener('click', function(event) {
-      event.preventDefault();
-
-      _satellite.track('buttonClick', {
-        buttonName: 'Products Link'
-      });
-
-      setTimeout(() => {
-        window.location.assign(this.href);
-      }, 200);
-    });
-  }
-});
-</script> -->
-
-<!--<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    let a = "";
-    let b = "";
-
-    const browseButton = document.getElementById('BrowseCategoriesBTN');
-    const productsLink = document.getElementById('ProductsLink');
-
-    if (browseButton) {
-      browseButton.addEventListener('click', function (event) {
-        event.preventDefault(); // stop the link from navigating immediately
-        a = "Browse Categories button clicked";
-        console.log(a);
-
-        // Delay navigation
-        setTimeout(() => {
-          window.location.assign(this.href); // More predictable navigation
-        }, 200); // delay to show the console log
-      });
-    }
-
-    if (productsLink) {
-      productsLink.addEventListener('click', function (event) {
-        event.preventDefault(); // stop the link from navigating immediately
-        b = "Products link clicked";
-        console.log(b);
-
-        // Delay navigation
-        setTimeout(() => {
-          window.location.assign(this.href); // More predictable navigation
-        }, 200); //  delay to show the console log
-      });
-    }
-  });
-</script> -->
-
-  
-<!-- <script>
-  let a = "";
-  let b = "";
-
-  document.getElementById('BrowseCategoriesBTN')?.addEventListener('click', function (event) {
-    event.preventDefault(); // stop the link from navigating immediately
-    a = "Browse Categories button clicked";
-    console.log(a);
-
-    // Optional: navigate after a short delay (or immediately)
+  document.getElementById('BrowseCategoriesBTN')?.addEventListener('click', function(e) {
+    e.preventDefault(); // stop immediate navigation
+    a = "Browse Categories";
+    console.log("a =", a);
+    
     setTimeout(() => {
       window.location.href = this.href;
-    }, 200); // Delay so you can see console log (can be 0 too)
+    }, 300);
   });
 
-  document.getElementById('ProductsLink')?.addEventListener('click', function (event) {
-    event.preventDefault();
-    b = "Products link clicked";
-    console.log(b);
+  document.getElementById('ProductsLink')?.addEventListener('click', function(e) {
+    e.preventDefault(); // stop immediate navigation
+    b = "Products";
+    console.log("b =", b);
 
     setTimeout(() => {
       window.location.href = this.href;
-    }, 200);
+    }, 300);
   });
-</script> -->
 
-  <script>
-document.addEventListener('DOMContentLoaded', function() {
-  let a = "";
-  let b = "";
-
-  // Helper function: safely fire Launch event
-  function sendToLaunch(eventName, data) {
-    if (typeof _satellite === "object" && typeof _satellite.track === "function") {
-      _satellite.track(eventName, data);
-    } else {
-      setTimeout(() => sendToLaunch(eventName, data), 100);
-    }
-  }
-
-  // --- Button 1: Browse Categories ---
-  const browseButton = document.getElementById('BrowseCategoriesBTN');
-  if (browseButton) {
-    browseButton.addEventListener('click', function(event) {
-      event.preventDefault();
-      a = "Browse Categories button clicked";
-      console.log("Button 1:", a);
-
-      sendToLaunch('buttonClick', { clicked: 'BrowseCategoriesBTN', a: a });
-
-      setTimeout(() => window.location.assign(this.href), 300);
-    });
-  }
-
-  // --- Button 2: Products Link ---
-  const productsLink = document.getElementById('ProductsLink');
-  if (productsLink) {
-    productsLink.addEventListener('click', function(event) {
-      event.preventDefault();
-      b = "Products link clicked";
-      console.log("Button 2:", b);
-
-      sendToLaunch('buttonClick', { clicked: 'ProductsLink', b: b });
-
-      setTimeout(() => window.location.assign(this.href), 300);
-    });
-  }
 });
 </script>
-
-
 
 </body>
 </html>
+
 
 
 
